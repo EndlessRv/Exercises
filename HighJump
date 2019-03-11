@@ -1,0 +1,45 @@
+using System;
+
+namespace HighJump
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int tishoGoal = int.Parse(Console.ReadLine());
+            int start = tishoGoal - 30;
+            int counter = 0;
+            int totalJumps = 0;
+            while (counter != 3)
+            {
+                int jump = int.Parse(Console.ReadLine());
+
+                if (jump > start)
+                {
+                    start += 5;
+                    counter = 0;
+                    totalJumps++;
+                }
+                else if(jump <= start)
+                {
+                    counter++;
+                    totalJumps++;
+                }
+                if(start > tishoGoal)
+                {
+                    break;
+                }
+
+            }
+            if (counter == 3)
+            {
+                Console.WriteLine("Tihomir failed at {0}cm after {1} jumps.", start, totalJumps);
+            }
+            else
+            {
+                Console.WriteLine("Tihomir succeeded, he jumped over {0}cm after {1} jumps.", tishoGoal, totalJumps); 
+            }
+
+        }
+    }
+}
