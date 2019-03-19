@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace orders
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var itemAndPrice = new Dictionary<string, double>();
+            var itemAndCount = new Dictionary<string, int>();
+            string[] command = new string[3];
+            while (true)
+            {
+                string line = Console.ReadLine();
+                if (line == "buy")
+                {
+                    break;
+                }
+                command = line.Split().ToArray();
+                string item = command[0];
+                if (!itemAndPrice.ContainsKey(command[0]))
+                {
+                    itemAndPrice[item] = double.Parse(command[1]);
+                }
+                itemAndPrice[item] = double.Parse(command[1]);
+                if (!itemAndCount.ContainsKey(command[0]))
+                {
+                    itemAndCount.Add(item, int.Parse(command[2]));
+                }
+                else {
+                    itemAndCount[item] += int.Parse(command[2]);
+                }
+
+
+            }
+            foreach (var item in itemAndCount)
+            {
+                double price = itemAndPrice[item.Key];
+                double result = price * item.Value;
+                Console.WriteLine($"{item.Key} -> {result:f2}");
+            }
+        }
+    }
+}
