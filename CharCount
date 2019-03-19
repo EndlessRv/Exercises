@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CountChar
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] text = Console.ReadLine().Split(' ').ToArray();
+            string mergedText = string.Concat(text);
+            var list = new Dictionary<char, int>();
+            for (int i = 0; i < mergedText.Length; i++)
+            {
+                if (list.ContainsKey(mergedText[i]))
+                {
+                    list[mergedText[i]]++;
+                }
+                else
+                {
+                    list.Add(mergedText[i], 1);
+                }
+            }
+            foreach (KeyValuePair<char, int> kvp in list)
+            {
+                Console.WriteLine("{0} -> {1}", kvp.Key, kvp.Value);
+            }
+        }
+    }
+}
